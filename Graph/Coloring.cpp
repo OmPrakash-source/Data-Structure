@@ -20,6 +20,8 @@ public:
             l[v].push_back(u);
         }
     }
+// .................... Coloring ....................
+
     bool isBipartite(int src, vector<bool>&vis, vector<int>&color){
         queue<int>q;
         vis[src] = true;
@@ -55,16 +57,49 @@ public:
         }
         return true;
     }
+// .................... All path ....................
+    void pathHalper(int src, int dest, vector<bool>&vis, string &path ){
+        if(src == dest){
+            cout<< path<<dest;
+            cout<<endl;
+            return;
+        }
+        vis[src] = true;
+        path+= to_string(src); 
+        list<int>neighbors = l[src];
+        for(int v : neighbors){
+            if(!vis[v]){
+                pathHalper(v,dest,vis,path);
+            }
+        }
+        path = path.substr(0,path.size()-1);
+        vis[src] = false;   //create a multiple level
+        // agar or koi path bhi vohi node se ho to vis = false hoga tab hi wo again uspe jayga
+    }
+    void printAllPath(int src,int dest){
+        vector<bool>vis(V,false);
+        string path = " ";
+        pathHalper(src,dest,vis,path);
+    }
 };
 
 int main(){
-    Graph graph(10); 
-    graph.addEdge(0,1);
-    graph.addEdge(0,2);
-    graph.addEdge(1,3);
-    graph.addEdge(2,3);
-    graph.addEdge(0,3);
+    Graph graph(10,false); 
+    // graph.addEdge(0,1);
+    // graph.addEdge(0,2);
+    // graph.addEdge(1,3);
+    // graph.addEdge(2,3);
+    // graph.addEdge(0,3);
+       graph.addEdge(0,3);
+       graph.addEdge(2,3);
+       graph.addEdge(3,1);
+       graph.addEdge(4,0);
+       graph.addEdge(4,1);
+       graph.addEdge(5,0);
+       graph.addEdge(5,2);
 
-    cout<<graph.Coloring();
+       graph.printAllPath(5,1);
+
+    // cout<<graph.Coloring();
 
 }
