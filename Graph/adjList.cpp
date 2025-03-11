@@ -61,6 +61,26 @@ using namespace std;
             vector<bool>vis(7,false); //size is 7 and all value is false by defalt
             dfshalper(0,vis);
          }
+         bool Hasexisthealper(int src,int dest, vector<bool>&vis){
+            if(src == dest){
+                return true;
+            }
+            vis[src] = true;
+            list<int>neighbors = l[src];
+            for(int v : neighbors){
+                if(vis[v] != true){
+                    if( Hasexisthealper(v,dest,vis)){
+                        return true;
+                    }
+                }
+            }
+            return false;
+         }
+
+         bool Hasexist(int src,int dest){
+            vector<bool>vis(7,false); //size is 7 and all value is false by defalt
+            return Hasexisthealper(src, dest, vis);
+         }
     };
 // Direacted
     // class Graph{
@@ -113,7 +133,7 @@ int main(){
         graph.addEdge(3,5);
         graph.addEdge(4,5);
         graph.addEdge(5,6);
-        graph.dfs();
+        cout<< graph.Hasexist(0,5);
 
     // graph.print();
 }
