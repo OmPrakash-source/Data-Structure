@@ -1,128 +1,61 @@
 #include<iostream>
+#include<list>
 #include<vector>
-#include<string>
+#include<queue>
 using namespace std;
-
-class Node {
-public:
-    string key;
-    int val;
-    Node* next;
-
-    Node(string key, int val) {
-        this->key = key;
-        this->val = val;
-        this->next = NULL; // Initialize next to NULL
-    }
-    // delete LL agar node ka next null nhi hai to pahle usko delete karna 
-    ~Node() {
-        if (next != NULL) {
-            delete next;
+// undirected
+    class Graph{
+        int V;
+        list<int>*l;
+    public:
+        Graph(int V){
+            this->V = V;
+            l =new list<int>[V];
         }
-    }
-};
-
-class HaseTable {
-    int totSize;
-    int currSize;
-    Node** table; // Node*(int*table) => Node**table
-    int hashFunction(string key) {
-        int idx = 0;
-        // key (string) se idx banara hai 
-        for (int i = 0; i < key.size(); i++) {
-            idx = (idx + (key[i] * key[i])) % totSize;
-        }
-        return idx;
-    }
-
-public:
-    HaseTable(int size = 5) {
-        totSize = size;
-        currSize = 0;
-
-        table = new Node * [totSize];
-
-        for (int i = 0; i < totSize; i++) { // by default starting value is garbage value we initialize it to null
-            table[i] = NULL;
-        }
-    }
-
-    void rehash() {
-        Node** oldTable = table; // purani table ko oldtable me store kiya or table ko update kiye
-        int oldSize = totSize;
-        totSize = 2 * totSize; // size bada kar diya new updated table ka 
-        table = new Node * [totSize]; //size ke barabar new node bana di
-        // table ki first value null hogi isme bhi
-        for (int i = 0; i < totSize; i++) {
-            table[i] = NULL;
-        }
-        //old table ki value copy karna hai
-        for (int i = 0; i < oldSize; i++) {
-            Node* temp = oldTable[i]; //LL ka head temp me store
-            while (temp != NULL) {
-                insert(temp->key, temp->val);
-                temp = temp->next;
+        void addEdge(int u, int v){ //u---v
+            l[u].push_back(v);
+            l[v].push_back(u);
+        }    
+        void print(){
+            for(int u=0;u<V;u++){
+                list<int>neighbors = l[u];
+                cout<<u<<" : ";
+                for(int v : neighbors){
+                    cout<<v<<" ";
+                }
+                cout<<endl;
             }
-
-            if (oldTable[i] != NULL) {
-                delete oldTable[i]; // LL ka head delete but first call destructor
-            }
-
         }
-        delete[] oldTable; //delete old table because new table is created 
-    }
-    void insert(string key, int value) { //O(1) but rehash = O(n)
-        int idx = hashFunction(key);
-        Node* newNode = new Node(key, value);
-        newNode->next = table[idx];
-        table[idx] = newNode; // Update the table with the new head
-
-        currSize++;
-        double lambda = currSize / (double)totSize;
-        if (lambda > 1) {
-            rehash(); //O(n)
+        bool bfs(int src,int dest){ // O(V + E)
+            queue<int>q;
+            vector<bool>vis(V, false); //vis(size,true/false) kyoki bool vector hai
+            q.push(src);
+            vis[src] = true;
+            while(q.size()>0){
+             src = q.front();
+             q.pop();
+        
+             list<int>neighbors = l[src];
+             for(int v : neighbors){
+                if(!vis[v]){
+                    vis[v]=true;
+                    q.push(v);
+                    if(src == dest) return true;
+                    }
+                }
+            } 
+            return false;
+         }
+        };
+        int main(){
+            Graph graph(7);
+                graph.addEdge(0,1);
+                graph.addEdge(0,2);
+                graph.addEdge(1,3);
+                graph.addEdge(2,4);
+                graph.addEdge(3,4);
+                graph.addEdge(3,5);
+                graph.addEdge(4,5);
+                graph.addEdge(5,6);
+                cout<< graph.bfs(0,2);
         }
-    }
-    bool Exist(string key) {
-        int idx = hashFunction(key);
-
-        Node* temp = table[idx];
-        while (temp != NULL) {
-            if (temp->key == key) {
-                return true;    // if key is found
-            }
-            temp = temp->next;
-        }
-        return false;
-    }
-    int search(string key) {
-        int idx = hashFunction(key);
-
-        Node* temp = table[idx];
-        while (temp != NULL) {
-            if (temp->key == key) {
-                return temp->val;    // if key is found value
-            }
-            temp = temp->next;
-        }
-        return -1;
-    }
-    void remove(string key) {
-        // Implementation for remove function
-    }
-
-};
-int main() {
-    HaseTable ht;
-    ht.insert("India", 150);
-    ht.insert("China", 150);
-    ht.insert("US", 50);
-    ht.insert("Uk", 20);
-    ht.insert("Nepal", 10);
-
-    if (ht.Exist("India")) {
-        cout << "India's population " << ht.search("India") << endl;
-    }
-
-    return 0;
-}

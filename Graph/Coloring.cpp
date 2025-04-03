@@ -2,6 +2,7 @@
 #include<vector>
 #include<string>
 #include<queue>
+#include<stack>
 #include<list>
 using namespace std;
 class Graph{
@@ -13,6 +14,9 @@ public:
         this->V = V;
         this->isTrue = isTrue;
         l = new list<int>[V];
+    }
+    ~Graph() {
+        delete[] l;  // Frees the array of lists
     }
     void addEdge(int u,int v){
         l[u].push_back(v);
@@ -57,6 +61,7 @@ public:
         }
         return true;
     }
+
 // .................... All path ....................
     void pathHalper(int src, int dest, vector<bool>&vis, string &path ){
         if(src == dest){
@@ -81,25 +86,59 @@ public:
         string path = " ";
         pathHalper(src,dest,vis,path);
     }
+// _____________________________ Topological ____________________________
+    //dfs
+    void topoHalper(int src, vector<bool>&vis, stack<int>&st){
+        vis[src] = true;
+        list<int>neighbors = l[src];
+        for(int v: neighbors){
+            if(!vis[v]){
+                topoHalper(v,vis,st);
+            }
+        }
+        st.push(src);
+    }
+    void topoSort(){
+        vector<bool>vis(V,false);
+        stack<int>st;
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                topoHalper(i,vis,st);
+            }
+        }
+        //print 
+        while(!st.empty()){
+            cout<<st.top()<<" ";
+            st.pop();
+        }
+    }
 };
 
 int main(){
-    Graph graph(10,false); 
+    Graph graph(8,false); 
     // graph.addEdge(0,1);
     // graph.addEdge(0,2);
     // graph.addEdge(1,3);
     // graph.addEdge(2,3);
     // graph.addEdge(0,3);
-       graph.addEdge(0,3);
-       graph.addEdge(2,3);
-       graph.addEdge(3,1);
-       graph.addEdge(4,0);
-       graph.addEdge(4,1);
-       graph.addEdge(5,0);
-       graph.addEdge(5,2);
+    //    graph.addEdge(0,3);
+    //    graph.addEdge(2,3);
+    //    graph.addEdge(3,1);
+    //    graph.addEdge(4,0);
+    //    graph.addEdge(4,1);
+    //    graph.addEdge(5,0);
+    //    graph.addEdge(5,2);
 
-       graph.printAllPath(5,1);
+    //    graph.printAllPath(5,1);
+       graph.addEdge(1,3);
+       graph.addEdge(2,1);
+       graph.addEdge(2,5);
+       graph.addEdge(5,6);
+       graph.addEdge(7,3);
+       graph.addEdge(7,6);
+       
 
+    graph.topoSort();
     // cout<<graph.Coloring();
 
 }

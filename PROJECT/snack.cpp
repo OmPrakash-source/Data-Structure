@@ -72,9 +72,9 @@ int main() {
             int newPosition = checkPosition(playerPosition);
             if (newPosition != playerPosition) {
                 if (newPosition > playerPosition)
-                    cout << "Ladder! Climbing up to " << newPosition << ".\n";
+                    cout << "Ladder! Climbing up to --> " << newPosition << ".\n";
                 else
-                    cout << "Snake! Sliding down to " << newPosition << ".\n";
+                    cout << "Snake! Sliding down to <-- " << newPosition << ".\n";
                 playerPosition = newPosition;
             }
             
