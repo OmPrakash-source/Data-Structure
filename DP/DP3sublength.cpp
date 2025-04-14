@@ -80,12 +80,12 @@ using namespace std;
                 }
             }
         }
-        for (int i = 1; i <= n; i++){
-            for (int j = 1; j <= m; j++){
-                cout<<dp[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        // for (int i = 1; i <= n; i++){
+        //     for (int j = 1; j <= m; j++){
+        //         cout<<dp[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
         return dp[n][m];
     }
 int main(){

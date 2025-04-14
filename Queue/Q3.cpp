@@ -119,9 +119,14 @@ void Nonrepeat(string str) {
 int main() {
     // string str = "aabccxb";      // Input stringl
     // Nonrepeat(str);              // Call the function
-    queue<int>q;
+    // queue<int>q;
+    Queue q;
     for(int i = 1 ; i<=10 ; i++){
        q.push(i);
     }
-    Interleave(q);
+    for(int i = 1 ; i<=10 ; i++){
+        cout<<q.front();
+        q.pop();
+     }
+    // Interleave(q);
 }

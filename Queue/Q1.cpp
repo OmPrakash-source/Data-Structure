@@ -15,11 +15,11 @@ class Node{
     }
 };
 
-class queue{
+class Queue{
     Node* head;
     Node* tail;
     public:
-        queue(){
+        Queue(){
             head = tail = NULL;
         }
     void push(int data){
@@ -48,15 +48,17 @@ class queue{
     }
 };
 int main(){
-    queue<int>q;
-    q.push(10);
-    q.push(20);
-    q.push(30);
-    while(!q.empty()){
-        cout<<q.front()<<" ";
-        q.pop();
-    }
-    queue q;
+    //SDL method
+    // queue<int>q;
+    // q.push(10);
+    // q.push(20);
+    // q.push(30);
+    // while(!q.empty()){
+    //     cout<<q.front()<<" ";
+    //     q.pop();
+    // }
+
+    Queue q;
     q.push(10);
     q.push(20);
     q.push(30);
