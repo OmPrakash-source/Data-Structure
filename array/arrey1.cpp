@@ -95,11 +95,22 @@ int secondMax(int arr[],int n){
         return ssmallest;
     }
     
+// _____________________ Remove duplicate return total number 
+ int removedupSorted(vector<int>arr, int n){
+    int i = 0;
+    for(int j=1;j<n;j++){
+        if(arr[i]!=arr[j]){
+            i++;
+        }
+    }
+    return i;//return total number 
+ }
 int main(){
     // int arr[] ={2, 3, 11, 99, 12};
     // int n = sizeof(arr)/sizeof(int);
 
-   vector<int>arr={2, 3, 11, 99, 12};
+   vector<int>arr={2, 3, 11, 12, 12, 12, 13, 13, 14, 99};
    int n=arr.size();
-    cout<<"Second maximum value is : "<<secondMaxVal(arr,n);
+    // cout<<"Second maximum value is : "<<secondMaxVal(arr,n);
+    cout<<removedupSorted(arr,n);
 }
