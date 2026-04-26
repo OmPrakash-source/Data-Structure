@@ -16,3 +16,4 @@ int main(){
       }
       cout<<" Min abs diff = "<<absDiff;
 }
+// minor style fix
