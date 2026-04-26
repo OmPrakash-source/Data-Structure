@@ -124,3 +124,4 @@ int main(){
     nextSmallerLeft(vec , nsl);
     Histogrom(vec);
 }
+// minor style fix
