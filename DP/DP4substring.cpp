@@ -56,9 +56,9 @@ int LIS(vector<int>arr){
 }
 
 int main(){
-    string str1 = "abxyzpqcde";
-    string str2 = "axyzpqgce";
-    cout<< logComStr(str1,str2)<<endl;
+    // string str1 = "abxyzpqcde";
+    // string str2 = "axyzpqgce";
+    // cout<< logComStr(str1,str2)<<endl;
 
     vector<int>arr = {50,3,10,7,40,80};
     cout<<LIS(arr);
