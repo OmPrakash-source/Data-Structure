@@ -78,3 +78,4 @@ int main(){
     cout<<"Delete value "<<s.pop()<<" \n";
     cout<<s.top()<<" \n";
 }
+// minor style fix
