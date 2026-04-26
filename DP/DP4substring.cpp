@@ -63,3 +63,4 @@ int main(){
     vector<int>arr = {50,3,10,7,40,80};
     cout<<LIS(arr);
 }
+// minor style fix
