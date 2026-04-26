@@ -45,7 +45,6 @@ int catTab(int n){
     dp[0] = 1;
     dp[1] = 1;
     dp[2] = 2;
-    int ans = 0;
     for(int i=3;i<=n;i++){ //ith catalan 
          for(int j=0; j<i; j++){ // 0 to i
             dp[i] += dp[j] * dp[i-j-1]; 
@@ -62,7 +61,7 @@ int main(){
         //      cout << i << " -> "<< catTab(i)<<"\n";
         // } 
         // cout<<endl;
-        cout<<catTab(20);
+        cout<<catTab(3);
     
     return 0;
 }
