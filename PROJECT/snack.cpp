@@ -68,26 +68,26 @@ int checkPosition(int position)
 }
 
 // Function to print the board
-void printBoard(int playerPosition)
-{
-    cout << "\nSnakes and Ladders Board:\n";
-    for (int i = 100; i > 0; i--)
-    {
-        if (i == playerPosition)
-        {
-            cout << "[P] "; // Mark player's position
-        }
-        else
-        {
-            cout << i << " ";
-        }
-        if (i % 10 == 1)
-        {
-            cout << "\n"; // New line after every 10 numbers
-        }
-    }
-    cout << "\n";
-}
+// void printBoard(int playerPosition)
+// {
+//     cout << "\nSnakes and Ladders Board:\n";
+//     for (int i = 100; i > 0; i--)
+//     {
+//         if (i == playerPosition)
+//         {
+//             cout << "[P] "; // Mark player's position
+//         }
+//         else
+//         {
+//             cout << i << " ";
+//         }
+//         if (i % 10 == 1)
+//         {
+//             cout << "\n"; // New line after every 10 numbers
+//         }
+//     }
+//     cout << "\n";
+// }
 
 int main()
 {
@@ -100,7 +100,7 @@ int main()
 
     while (playerPosition < BOARD_SIZE)
     {
-        printBoard(playerPosition); // Print the board
+        // printBoard(playerPosition); // Print the board
         cin.get();                  // Wait for user to press Enter
         int diceRoll = rollDice();
         cout << "You rolled a " << diceRoll << "!\n";
