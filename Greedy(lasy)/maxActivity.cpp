@@ -21,3 +21,4 @@
         vector<int>end =  {2,4,6,7,9,9};
         cout<<" maximum activitie : "<<maxActivitie(start,end);
     }
+// minor style fix
