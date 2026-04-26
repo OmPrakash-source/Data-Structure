@@ -51,3 +51,5 @@ int main(){
     vector<int>arr{0,1,3,2,5};//4 is missing 
     cout<<usingSum(arr)<<endl;
 }
+
+// minor style fix
