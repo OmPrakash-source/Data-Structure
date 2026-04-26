@@ -63,3 +63,4 @@ int main(){
 
     graph.Prim_s(0);
 }
+// minor style fix
