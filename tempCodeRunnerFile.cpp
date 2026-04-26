@@ -15,40 +15,7 @@
 
 // }
 
-//   vector<int>union_(vector<int>&a1, vector<int>&a2){
-//     vector<int>ans;
-//     int i = 0, j = 0;
-//     while(i < a1.size() && j < a2.size()){
-//         while(i > 0 && i < a1.size() && a1[i] == a1[i - 1]) i++;
-//         while(j > 0 && j < a2.size() && a2[j] == a2[j - 1]) j++;
 
-//         if(i >= a1.size() || j >= a2.size()) break;
-
-//         if(a1[i] < a2[j]){
-//             ans.push_back(a1[i++]);
-//         }
-//         else if(a1[i] > a2[j]){
-//             ans.push_back(a2[j++]);
-//         }
-//         else{
-//             ans.push_back(a1[i]);
-//             i++; j++;
-//         }
-//     }
-//     while(i < a1.size()){
-//         if(i == 0 || a1[i] != a1[i-1]){
-//             ans.push_back(a1[i]);
-//         }
-//         i++;
-//     }
-//     while(j < a2.size()){
-//         if(j == 0 || a2[j] != a2[j-1]){
-//             ans.push_back(a2[j]);
-//         }
-//         j++;
-//     }
-//     return ans;
-//   }
 //   // 451
 //   string frequencySort(string s) {
 //         unordered_map<char, int>map;
@@ -443,6 +410,43 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+  vector<int>union_(vector<int>&a1, vector<int>&a2){
+    vector<int>ans;
+    int i = 0, j = 0;
+    while(i < a1.size() && j < a2.size()){
+        while(i > 0 && i < a1.size() && a1[i] == a1[i - 1]) i++;
+        while(j > 0 && j < a2.size() && a2[j] == a2[j - 1]) j++;
+
+        if(i >= a1.size() || j >= a2.size()) break;
+
+        if(a1[i] < a2[j]){
+            ans.push_back(a1[i++]);
+        }
+        else if(a1[i] > a2[j]){
+            ans.push_back(a2[j++]);
+        }
+        else{
+            ans.push_back(a1[i]);
+            i++; j++;
+        }
+    }
+    while(i < a1.size()){
+        if(i == 0 || a1[i] != a1[i-1]){
+            ans.push_back(a1[i]);
+        }
+        i++;
+    }
+    while(j < a2.size()){
+        if(j == 0 || a2[j] != a2[j-1]){
+            ans.push_back(a2[j]);
+        }
+        j++;
+    }
+    return ans;
+  }
+
+  
 void func(vector<int>&nums, int n){
     int j=0;
     for(int i=0; i<n; i++){
