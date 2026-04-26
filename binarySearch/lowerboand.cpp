@@ -77,3 +77,5 @@ int main(){
                 
     cout<<it2<<endl;
 }
+
+// minor style fix
