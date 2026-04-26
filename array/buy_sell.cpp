@@ -21,3 +21,4 @@ int main(){
     cout<<stock(arr,n);
 
 }
+// minor style fix
