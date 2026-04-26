@@ -85,3 +85,5 @@ int main(){
     cout<<celeblity_found(M);
     return 0;
 }
+
+// minor style fix
