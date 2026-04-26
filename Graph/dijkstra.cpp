@@ -3,7 +3,9 @@
 #include<string>
 #include<queue>
 #include<stack>
+#include<set>
 #include<list>
+#include <algorithm>
 using namespace std;
 
 class Edge{
@@ -57,6 +59,62 @@ public:
         }
     }
 
+    //using priority queue 
+    vector<int>dijkstra_pq(vector<vector<pair<int,int>>>adj, int E, int S){
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        // denote datatype ,storage ,ordreing 
+        vector<int>dist(E,INT16_MAX);
+        dist[S] = 0; //mark source as 0 weight
+        pq.push({0,S});
+        while(!pq.empty()){
+            int wt = pq.top().first;
+            int node = pq.top().second;
+            pq.pop();
+            for(auto it : adj[node]){
+                int adjnode = it.first;
+                int adjwt = it.second;
+                if(wt + adjwt < dist[adjnode]){
+                    dist[adjnode] = wt + adjwt;
+                    pq.push({dist[adjnode],adjnode});
+                }
+            }
+        }
+        return dist;
+    }
+    vector<int>dijkstra_set(vector<vector<pair<int,int>>>adj, int E, int S){
+        set<pair<int,int>>st;
+        // denote datatype ,storage ,ordreing 
+        vector<int>dist(E,INT16_MAX);
+        dist[S] = 0; //mark source as 0 weight
+        st.insert({0,S});
+        vector<int> parent(E, -1);
+        
+        while(!st.empty()){
+            int wt = (*st.begin()).first; // * give a value
+            int node = (*st.begin()).second;
+            st.erase({wt,node});
+            for(auto it : adj[node]){
+                int adjnode = it.first;
+                int adjwt = it.second;
+                if(wt + adjwt < dist[adjnode]){
+                    if(dist[adjnode] != INT16_MAX){ // agar set me exist karta hai or non max hai to hata do 
+                        st.erase({dist[adjnode],adjnode});
+                    }
+                    parent[adjnode] = node; // track a path
+                    dist[adjnode] = wt + adjwt;
+                    st.insert({dist[adjnode],adjnode});
+                }
+            }
+        }
+        vector<int> path;
+        int curr = E;
+        while(curr != -1) {
+            path.push_back(curr);
+            curr = parent[curr];
+        }
+        reverse(path.begin(), path.end());
+        return path;
+    }
 int main(){
     vector<vector<Edge>>graph(5);
   //index[].vectorpush(vertices,weight)  
@@ -70,18 +128,45 @@ int main(){
     // graph[4].push_back(Edge(2,5)); 
     // dijkstra(0,graph,6);
 
-    graph[0].push_back(Edge(1, 2));
-    graph[0].push_back(Edge(2, 4));
+    // graph[0].push_back(Edge(1, 2));
+    // graph[0].push_back(Edge(2, 4));
 
-    graph[1].push_back(Edge(2, -4));
+    // graph[1].push_back(Edge(2, -4));
 
      
-    graph[2].push_back(Edge(3, 2));  
+    // graph[2].push_back(Edge(3, 2));  
 
-    graph[3].push_back(Edge(4, 4));
+    // graph[3].push_back(Edge(4, 4));
 
-    graph[4].push_back(Edge(1, -1)); 
-    BellmenFord(4,graph,5);
-    // dijkstra(4,graph,5);
+    // graph[4].push_back(Edge(1, -1)); 
+    // BellmenFord(4,graph,5);
+    // // dijkstra(4,graph,5);
+
+
+    int E = 5; // number of vertices
+    int S = 0; // source vertex
+
+    // adjacency list: {node, weight}
+    vector<vector<pair<int,int>>> adj(E);
+
+
+    // 0 -> 1 (2), 0 -> 2 (4)
+    adj[0].push_back({1,2});
+    adj[0].push_back({2,4});
+
+    // 1 -> 2 (1), 1 -> 3 (7)
+    adj[1].push_back({2,1});
+    adj[1].push_back({3,7});
+
+    // 2 -> 4 (3)
+    adj[2].push_back({4,3});
+
+    // 3 -> 4 (1)
+    adj[3].push_back({4,1});
+
+    vector<int> dist = dijkstra_set(adj, E, S);
+    for(int i : dist){
+        cout  << i << "-> ";  
+    }
     return 0;
 }
