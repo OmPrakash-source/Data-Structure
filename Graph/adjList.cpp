@@ -12,15 +12,15 @@ using namespace std;
             this->V = V;
             l =new list<int>[V];
         }
-        void addEdge(int u, int v){ //u---v
+        void addEdge(int u, int v){ // u---v
             l[u].push_back(v);
             l[v].push_back(u);
         }    
         void print(){
             for(int u=0;u<V;u++){
-                list<int>neighbors = l[u];
+                // list<int>neighbors = l[u];
                 cout<<u<<" : ";
-                for(int v : neighbors){
+                for(int v : l[u]){ // or neighbors = l[u]
                     cout<<v<<" ";
                 }
                 cout<<endl;
@@ -31,7 +31,7 @@ using namespace std;
             vector<bool>vis(V, false); //vis(size,true/false) kyoki bool vector hai
             q.push(0);
             vis[0] = true;
-            while(q.size()>0){
+            while(!q.empty()){
              int u = q.front();
              q.pop();
              cout<<u<<" ";
