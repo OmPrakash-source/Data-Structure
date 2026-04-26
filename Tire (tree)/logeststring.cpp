@@ -74,3 +74,4 @@ int main(){
     cout<<longestString(dict)<<endl;
     return 0;
 }
+// minor style fix
