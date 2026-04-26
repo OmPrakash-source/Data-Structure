@@ -170,7 +170,7 @@ Node* createtree(){
         int option2 = height(root->right);  
         int curr = abs(option1 - option2);
 
-        int leftans = Balance(root->left);
+        int leftans = Balance(root->left); 
         int rightans = Balance(root->right);
         bool currAns = (curr <= 1 && curr >= -1);
 
@@ -181,7 +181,7 @@ Node* createtree(){
             return false;
         }
     }
-//______________________________________ ancester _______________________
+//______________________________________236 ancester _______________________
 
  // given a two value p and q  a one node there it both meet 
 
@@ -200,6 +200,7 @@ Node* createtree(){
     Node* rightans = LowestAncestor(root->right, p, q);
 
     // If both leftans and rightans are not NULL, this node is the LCA
+    // jaha dono node left and right se non null ans aay wo hi Ancestor hai yo yaha hoga
     if (leftans != NULL && rightans != NULL) {
         return root;
     }
@@ -207,10 +208,10 @@ Node* createtree(){
     // Otherwise, return the non-NULL answer
     return leftans != NULL ? leftans : rightans;
 
-    // if(leftans != nullptr){
+    // if(leftans != nullptr){ aagar left se not null ans aay or right se null aay to left node hi ans hogi
     //     return leftans;
     // }
-    // else{
+    // else{ aagar right se not null ans aay or left se null aay to right node hi ans hogi
     //     return rightans; 
     // }
  }
@@ -241,27 +242,27 @@ Node* createtree(){
         root->right->right = new Node(8);
         root->left->right->left = new Node(7);
         root->left->right->right = new Node(4);
-            cout<<"Printing levelorder \n";
-            levelOrder(root);
-            cout<<endl;
+            // cout<<"Printing levelorder \n";
+            // levelOrder(root);
+            // cout<<endl;
 
-            cout<<"diameter of tree is: "<<diameterOfTree(root)<<endl;
+            // cout<<"diameter of tree is: "<<diameterOfTree(root)<<endl;
 
-            cout<<"height of tree: "<<height(root)<<endl;
+            // cout<<"height of tree: "<<height(root)<<endl;
         
-            if (Balance(root)) {
-                cout << "The tree is balanced." << endl;
-            } else {
-                cout << "The tree is not balanced." << endl;
-            }
+            // if (Balance(root)) {
+            //     cout << "The tree is balanced." << endl;
+            // } else {
+            //     cout << "The tree is not balanced." << endl;
+            // }
 
-    // int p = 7, q = 5;
+    int p = 7, q = 5;
 
-    // Node* lca = LowestAncestor(root, p, q);
+    Node* lca = LowestAncestor(root, p, q);
 
-    // if (lca != NULL) {
-    //     cout << "Lowest Common Ancestor of " << p << " and " << q << " is: " << lca->data << endl;
-    // } else {
-    //     cout << "No common ancestor found." << endl;
-    // }
+    if (lca != NULL) {
+        cout << "Lowest Common Ancestor of " << p << " and " << q << " is: " << lca->data << endl;
+    } else {
+        cout << "No common ancestor found." << endl;
+    }
      }
