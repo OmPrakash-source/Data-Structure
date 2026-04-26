@@ -25,3 +25,5 @@ int main(){
     f1();
     return 0;
 }
+
+// minor style fix
