@@ -30,3 +30,4 @@ int main(){
     int arr_1[] = {4, 2, 6, 16, 8, 12, 10, 14};
     cout<<linearSearch(arr_1, m, 16)<<endl;
 }
+// minor style fix
