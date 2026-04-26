@@ -26,3 +26,5 @@ int main(){
     cout<<fiboByteb(n);
 
 }
+
+// minor style fix
