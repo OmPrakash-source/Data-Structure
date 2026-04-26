@@ -87,3 +87,5 @@ int main(){
     de.pushrear(40);
     cout<<de.getfront() <<" "<<de.getrear()<<endl;
 }
+
+// minor style fix
