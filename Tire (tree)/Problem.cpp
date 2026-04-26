@@ -102,3 +102,4 @@ int main(){
     Prefix(word);
     return 0;
 }
+// minor style fix
