@@ -35,3 +35,4 @@ int main(){
     DecimalToBinary(n);
     return 0;
 }
+// minor style fix
