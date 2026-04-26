@@ -193,3 +193,5 @@ int main(){
     cout<<findsunday(n, st);
 }
 // minor style fix
+
+// final cleanup pass
