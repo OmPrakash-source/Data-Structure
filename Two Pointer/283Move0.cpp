@@ -42,3 +42,4 @@ int main(){
         cout<<nums[i]<<" ";
     }
 }
+// minor style fix
