@@ -20,3 +20,4 @@ int main(){
     cout<<palindrom(s);
     return 0;
 }
+// minor style fix
