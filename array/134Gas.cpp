@@ -22,3 +22,4 @@ int main(){
     cout<<gassta(gas, cost);
     return 0;
 }
+// minor style fix
