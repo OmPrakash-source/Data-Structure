@@ -245,3 +245,4 @@ bool findPalindrome(Node* head) {
         }
         temp->next = NULL; 
     }   
+// minor style fix
