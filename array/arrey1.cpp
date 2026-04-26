@@ -114,3 +114,4 @@ int main(){
     // cout<<"Second maximum value is : "<<secondMaxVal(arr,n);
     cout<<removedupSorted(arr,n);
 }
+// minor style fix
