@@ -75,3 +75,4 @@ int main(){
 
     // cout<<optimize(vec, 5,
     }
+// minor style fix
