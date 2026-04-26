@@ -42,3 +42,5 @@ int main(){
     NearCar(pos, k);
     return 0;
 }
+
+// minor style fix
