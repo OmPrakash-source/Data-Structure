@@ -20,3 +20,4 @@
         string str = "abcadadd";
         int n = str.size();
     }
+// minor style fix
