@@ -86,3 +86,4 @@ void reverse2(Node* &head){
     cout<< "after reverse ";
      print(head);
  }
+// minor style fix
