@@ -30,3 +30,5 @@ cout << (x++ && ++x);
 
 
 }
+
+// minor style fix
