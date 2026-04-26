@@ -167,3 +167,4 @@ using namespace std;
                 cout <<graph.isCycleDirected();
         return 0;
     }
+// minor style fix
