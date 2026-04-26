@@ -24,3 +24,4 @@ int countPrimes(int n) {
 int main(){
 
 }
+// minor style fix
