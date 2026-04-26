@@ -36,7 +36,7 @@ class Node{
         // point new node to head
         newNode->next = head;
         // updata newnode
-        head= newNode;
+        head = newNode;
         }
     }
 //________________________________ insert by tail ____________________________________________
@@ -118,7 +118,6 @@ class Node{
         else if(head==tail){
            Node*temp = head; 
            delete temp;
-            head =NULL; 
             head =NULL; 
             return;
         }
@@ -298,7 +297,7 @@ class Node{
             if(temp == NULL || temp->next == NULL){
                 return head;
             }
-            while(head!=NULL){
+            while(temp!=NULL){
                 if(temp->data == temp->next->data){
                     Node* NextNode = temp->next;
                     temp->next = NextNode->next;    // ye time pe yad nhi aaya hai
@@ -349,13 +348,13 @@ class Node{
         insertTail(head,tail,1);
      
     
-        // tail->next = head->next->next;
+        tail->next = head->next->next;
         // cout<<cycle(head)<<endl;
         // cycle(head);
        
         // addOne(head);
         // Node* DataMiddle = findMiddle(head);
-        // cout<< DataMiddle -> data<<endl;
+        // cout<< DataMiddle->data<<endl;
         Zig_zag(head);
         print(head);
         // int position;

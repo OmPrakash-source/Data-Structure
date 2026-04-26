@@ -45,7 +45,7 @@ class Node{
         head = tail =newNode; 
     }
     else{
-        newNode->prev = tail ;
+        newNode->prev = tail;
         tail->next = newNode;
         tail = tail->next;
     }
