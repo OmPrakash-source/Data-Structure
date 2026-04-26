@@ -290,3 +290,5 @@ int main(){
     root = NULL; // ✅ Prevents use-after-free errors
     return 0;
 }
+
+// minor style fix
