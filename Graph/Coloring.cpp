@@ -142,3 +142,4 @@ int main(){
     // cout<<graph.Coloring();
 
 }
+// minor style fix
