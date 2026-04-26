@@ -23,3 +23,4 @@ int main(){
     int V = 999;
     coins(coin , V);
 }
+// minor style fix
