@@ -78,3 +78,4 @@ int main(){
     cout<<endl;
     firstnagative(vec,k);
 }
+// minor style fix
