@@ -51,3 +51,5 @@ int main() {
     Knapsack(value, weight, capacity);
     return 0;
 }
+
+// minor style fix
