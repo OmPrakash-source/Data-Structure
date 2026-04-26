@@ -84,3 +84,4 @@ int main()
     // score_ptr = &low_score; // erroe
     cout << *score_ptr << endl;
 }
+// minor style fix
