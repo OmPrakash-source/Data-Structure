@@ -26,3 +26,4 @@ int main(){
     string s = "()()((())";
     cout<<longestparn(s)<<endl;
 }
+// minor style fix
