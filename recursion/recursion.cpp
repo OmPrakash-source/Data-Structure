@@ -58,6 +58,27 @@ using namespace std;
             }
             return Sorted(arr ,n , i+1);
         }
+//___________________________________ 50 pow(n,x) ___________________________________
+    double myPow(double x, int n) {
+        double product = 1;
+        long long N = n;
+        if(x == 0) return 0;
+        if(n == 0 || x == 1) return 1;
+        if(N < 0){
+                x = 1 / x;
+                N = -N;
+        }
+        while(N > 0){
+            if(N%2 == 1){
+                product *= x;
+                N = N-1;
+            }
+            x*=x;
+            N/=2;
+        }
+        
+        return product;
+    }
 
         int main(){
         cout <<" Enter Your number :   ";
