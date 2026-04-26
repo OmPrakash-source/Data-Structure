@@ -70,3 +70,4 @@ int main(){
     graph.addEdge(5,2);
     graph.topoSort2helper();
 }
+// minor style fix
