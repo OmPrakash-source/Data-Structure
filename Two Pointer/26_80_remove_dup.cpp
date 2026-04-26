@@ -32,3 +32,4 @@ int main(){
     // output - 0,1,1,2,3,3 = 6
     cout<<removeDupI(vec)<<endl;
 }
+// minor style fix
