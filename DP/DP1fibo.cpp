@@ -46,7 +46,7 @@ using namespace std;
 // O(n) time and O(n) space complexity
 // using memoization
         int Ways(int n,vector<int>&f){
-            if(n == 1||n == 0){
+            if(n <= 1){
                 return 1;
             }
             if(f[n] != -1){
