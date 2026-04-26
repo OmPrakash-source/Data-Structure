@@ -352,3 +352,5 @@ int main()
          << ans[0] << ", " << ans[1] << "}\n";
     return 0;
 }
+
+// minor style fix
