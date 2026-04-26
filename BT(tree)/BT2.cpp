@@ -134,3 +134,4 @@ int main()
         cout << "The " << k << "-th ancestor of " << target << " is not exist \n";
     }
 }
+// minor style fix
