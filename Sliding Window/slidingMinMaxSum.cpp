@@ -46,3 +46,5 @@ int main(){
     int k =4;
     cout<<slidingSum(v,k);
 }
+
+// minor style fix
