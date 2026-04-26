@@ -113,3 +113,5 @@ int main() {
     delete []array_ptr;
     return 0;
 }
+
+// minor style fix
