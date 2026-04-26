@@ -71,3 +71,5 @@ int main(){
     cout<<MCMtab(arr)<<endl;
 }
 
+
+// minor style fix
