@@ -72,3 +72,4 @@ int main(){
     string str = "ababa";
     return 0;
 }
+// minor style fix
