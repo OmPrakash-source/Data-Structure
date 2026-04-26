@@ -50,3 +50,4 @@ int main(){
     string smaller = "aaba";
     cout<< CountOccurrencesOfAnagrames(bigger,smaller);
 }
+// minor style fix
