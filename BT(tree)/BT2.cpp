@@ -39,16 +39,15 @@ int height(Node *root)
 }
 // __________________________________ path sum ______________________________________________
 
-void hasPathSum(Node *root, int target, vector<vector<int>> &ans, vector<int> &temp, int sum)
-{
-    if (root == NULL)
-        return;
+void hasPathSum(Node *root, int target, vector<vector<int>> &ans, vector<int> &temp, int sum){
+    if (root == NULL)return;
+
     sum += root->data;
     temp.push_back(root->data);
-    if (root->left == NULL && root->right == NULL)
-    {
-        if (sum == target)
-        {
+
+    if (root->left == NULL && root->right == NULL){
+
+        if (sum == target){
             ans.push_back(temp);
         }
         temp.pop_back();
@@ -85,14 +84,12 @@ Node *findKthAncestor(Node *root, int target, int &k, Node *&ans)
     Node *rightans = findKthAncestor(root->right, target, k, ans);
 
     // if left and right any one side given true then ->
-    if (leftans || rightans)
-    {
+    if (leftans || rightans){
 
         // deccrease avalue of k
         k--;
 
-        if (k == 0)
-        {
+        if (k == 0){
             ans = root;
         }
         // root->val is stored in ans
