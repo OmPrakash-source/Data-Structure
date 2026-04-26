@@ -99,19 +99,37 @@
         };
         
         int main(){
-            stack st(8);
-            st.print();
-            st.push1(1);
-            st.print();
-            st.push1(3);
-            st.push1(5);
-            st.push1(7);
-            st.push1(9);
-            st.push2(11);
-            st.push2(13);
-            st.push2(15); 
-            st.print();
-            cout<<st.gettop1()<<endl;
-            cout<<st.gettop2()<<endl;
+            // stack st(8);
+            // st.print();
+            // st.push1(1);
+            // st.print();
+            // st.push1(3);
+            // st.push1(5);
+            // st.push1(7);
+            // st.push1(9);
+            // st.push2(11);
+            // st.push2(13);
+            // st.push2(15); 
+            // st.print();
+            // cout<<st.gettop1()<<endl;
+            // cout<<st.gettop2()<<endl;
+             stack st(7);
+    // // Stack<int>st;
+    st.push1(3);
+    st.push1(2);
+    st.push1(1);
+    st.push2(7);
+    st.push2(6);
+    st.push2(5);
+    st.push2(4);
+     while(!st.empty1()){
+        cout<<st.gettop1()<<" ";
+        st.pop1();
+    }
+    cout<<endl;
+    while(!st.empty2()){
+        cout<<st.gettop2()<<" ";
+        st.pop2();
+    }
             return 0;
         }
