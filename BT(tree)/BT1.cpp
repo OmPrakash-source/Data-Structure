@@ -266,3 +266,4 @@ Node* createtree(){
         cout << "No common ancestor found." << endl;
     }
      }
+// minor style fix
