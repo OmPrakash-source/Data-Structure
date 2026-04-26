@@ -29,3 +29,5 @@ public:
         return head;
     }
 };
+
+// minor style fix
