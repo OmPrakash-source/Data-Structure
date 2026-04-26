@@ -27,3 +27,4 @@ int main(){
     SlidingWin(arr,k);
     return 0;
 }
+// minor style fix
