@@ -43,3 +43,4 @@ int main(){
     cout<< compear_string(s, t);
     return 0;
 }
+// minor style fix
