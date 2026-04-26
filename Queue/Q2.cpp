@@ -101,3 +101,4 @@
         q.pop();
         cout<<q.front();
     }
+// minor style fix
