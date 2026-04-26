@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 #include<queue>
 using namespace std;
 class Node{
@@ -131,6 +132,12 @@ Node* createtree(){
         }
         return -1;
     }
+ 
+    void SerchByMap(int inOrder[], int n, map<int,int> &m){
+        for(int i =0; i<n; i++){
+            m[inOrder[i]] = i;
+        }
+    }
 // pre and in use to create tree
 
 
@@ -159,8 +166,9 @@ Node* createtree(){
 // post and in use to create tree
 
 
-    Node* construct_tree_postandin(int post[], int in[], int &postindex, int instart, int inend, int size ){ 
+    Node* construct_tree_postandin(map<int,int>&m, int post[], int in[], int &postindex, int instart, int inend, int size ){ 
 
+        
     // yaha pe preindex ko by refrence bhejna hai kyiki wo position change kare or recursion se restart n ho
         //base 
         if(postindex < 0 || instart > inend ){
@@ -173,15 +181,16 @@ Node* createtree(){
         Node*root = new Node(element);
 
         //left or right ke node to inorder
-        int position = searchInorder(in, size, element);
+                // int position = searchInorder(in, size, element);
+
+        // search position by map in O(1)
+        int position = m[element];
 
     /* that is most importent first call right then call left*/
-        root->right = construct_tree_postandin(post ,in ,postindex ,position+1 ,inend ,size);
+        root->right = construct_tree_postandin(m,post ,in ,postindex ,position+1 ,inend ,size);
 
-        root->left = construct_tree_postandin(post ,in ,postindex ,instart ,position-1 ,size);
+        root->left = construct_tree_postandin(m,post ,in ,postindex ,instart ,position-1 ,size);
 
-        
-        
         return root;
 
     }
@@ -205,7 +214,10 @@ Node* createtree(){
         int inorderstart = 0;
         int inorderend = 5;
 
-        Node* root = construct_tree_postandin( postorder,inorder, postindex, inorderstart,inorderend, size); 
+
+        map<int,int>m;
+        SerchByMap(inorder, size, m);
+        Node* root = construct_tree_postandin( m,postorder,inorder, postindex, inorderstart,inorderend, size); 
 
         levelOrder(root);
 
