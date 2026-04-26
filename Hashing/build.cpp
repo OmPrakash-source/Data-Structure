@@ -10,54 +10,45 @@ public:
     int val;
     Node *next;
 
-    Node(string key, int val)
-    {
+    Node(string key, int val){
         this->key = key;
         this->val = val;
         this->next = NULL; // Initialize next to NULL
     }
     // delete LL agar node ka next null nhi hai to pahle usko delete karna
-    ~Node()
-    {
-        if (next != NULL)
-        {
+    ~Node(){
+        if (next != NULL){
             delete next;
         }
     }
 };
 
-class HaseTable
-{
+class HaseTable{
     int totSize;
     int currSize;
     Node **table; // Node*(int*table) => Node**table
-    int hashFunction(string key)
-    {
+    int hashFunction(string key){
         int idx = 0;
         // key (string) se idx banara hai
-        for (int i = 0; i < key.size(); i++)
-        {
+        for (int i = 0; i < key.size(); i++){
             idx = (idx + (key[i] * key[i])) % totSize;
         }
         return idx;
     }
 
 public:
-    HaseTable(int size = 5)
-    {
+    HaseTable(int size = 5){
         totSize = size;
         currSize = 0;
 
         table = new Node *[totSize];
 
-        for (int i = 0; i < totSize; i++)
-        { // by default starting value is garbage value we initialize it to null
+        for (int i = 0; i < totSize; i++){ // by default starting value is garbage value we initialize it to null
             table[i] = NULL;
         }
     }
 
-    void rehash()
-    {
+    void rehash(){
         Node **oldTable = table; // purani table ko oldtable me store kiya or table ko update kiye
         int oldSize = totSize;
         totSize = 2 * totSize;       // size bada kar diya new updated table ka
@@ -68,24 +59,20 @@ public:
             table[i] = NULL;
         }
         // old table ki value copy karna hai
-        for (int i = 0; i < oldSize; i++)
-        {
+        for (int i = 0; i < oldSize; i++){
             Node *temp = oldTable[i]; // LL ka head temp me store
-            while (temp != NULL)
-            {
+            while (temp != NULL){
                 insert(temp->key, temp->val);
                 temp = temp->next;
             }
 
-            if (oldTable[i] != NULL)
-            {
+            if (oldTable[i] != NULL){
                 delete oldTable[i]; // LL ka head delete but first call destructor
             }
         }
         delete[] oldTable; // delete old table because new table is created
     }
-    void insert(string key, int value)
-    { // O(1) but rehash = O(n)
+    void insert(string key, int value){ // O(1) but rehash = O(n)
         int idx = hashFunction(key);
         Node *newNode = new Node(key, value);
         newNode->next = table[idx]; // it also be NULL
@@ -93,35 +80,28 @@ public:
 
         currSize++;
         double lambda = currSize / (double)totSize;
-        if (lambda > 1)
-        {
+        if (lambda > 1){
             rehash(); // O(n)
         }
     }
-    bool Exist(string key)
-    {
+    bool Exist(string key){
         int idx = hashFunction(key);
 
         Node *temp = table[idx];
-        while (temp != NULL)
-        {
-            if (temp->key == key)
-            {
+        while (temp != NULL){
+            if (temp->key == key){
                 return true; // if key is found
             }
             temp = temp->next;
         }
         return false;
     }
-    int search(string key)
-    {
+    int search(string key){
         int idx = hashFunction(key);
 
         Node *temp = table[idx];
-        while (temp != NULL)
-        {
-            if (temp->key == key)
-            {
+        while (temp != NULL){
+            if (temp->key == key){
                 return temp->val; // if key is found value
             }
             temp = temp->next;
@@ -141,14 +121,12 @@ public:
         }
     }
 
-    void remove(string key)
-    {
+    void remove(string key){
         // Implementation for remove function
         int idx = hashFunction(key);
         Node*temp = table[idx];
         Node* prev = temp;
-        while (temp != NULL)
-        {
+        while (temp != NULL){
             if(temp->key == key){
                 //for head
                 if (prev == temp){ 
@@ -166,8 +144,7 @@ public:
         }
     }
 };
-int main()
-{
+int main(){
     HaseTable ht;
     ht.insert("India", 150);
     ht.insert("China", 150);
