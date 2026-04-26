@@ -178,3 +178,4 @@ void rotate_right2(vector<int>& nums, int k) {
         getline(cin,s);
         cout << countvov(s);
     }
+// minor style fix
