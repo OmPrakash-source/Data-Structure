@@ -8,6 +8,7 @@ bool compare(pair<double, int> p1, pair<double, int> p2) {
     return p1.first > p2.first;
 }
 
+
 // Fractional Knapsack implementation
 int Knapsack(vector<int> val, vector<int> wt, int W) {
     int n = val.size();
