@@ -59,3 +59,4 @@ void dupString( string str ,string ans , int i , bool map[26]){
         dupString( orignal , ans , 0 , map);
     return 0;
     }
+// minor style fix
