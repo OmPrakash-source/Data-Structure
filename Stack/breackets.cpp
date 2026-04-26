@@ -62,6 +62,26 @@
         }
         return st.empty();  //-----------------------> yaha aa gaye matlab stack khali hai to usko return kar do
     }
+
+    // 1021 outermost parentesis 
+    string removeOuterParentheses(string s) {
+        stack<char>st;
+        string ans = "";
+        for(char ch : s){
+            if(ch == '('){
+                if(!st.empty()){
+                    ans += ch;
+                }
+                st.push(ch);
+            }else{
+                st.pop();
+                if(!st.empty()){
+                    ans += ch;
+                }
+            }
+        }
+    return ans;
+    }
     int main(){
         // string stk = "((a+b)-(c*d))";
         // bool ans = redundenct(stk);
