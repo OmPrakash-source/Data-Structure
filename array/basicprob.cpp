@@ -179,3 +179,5 @@ void rotate_right2(vector<int>& nums, int k) {
         cout << countvov(s);
     }
 // minor style fix
+
+// final cleanup pass
