@@ -34,3 +34,4 @@
         maxProfit(job);
         return 0;
     }
+// minor style fix
