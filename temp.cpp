@@ -192,3 +192,4 @@ int main(){
     cin>>st;
     cout<<findsunday(n, st);
 }
+// minor style fix
