@@ -95,3 +95,4 @@ using namespace std;
          }
           cout<<"2^"<< n << " = "<< pow( 2 ,n);
         }
+// minor style fix
