@@ -91,3 +91,4 @@ int main(){
     cout<<knapsackTab(val,wt,W,n);
     return 0;
 }
+// minor style fix
