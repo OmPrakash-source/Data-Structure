@@ -32,7 +32,7 @@ bool isMatch_44(string t,string p){
     for(int i=1;i<=n;i++){
         for(int j=1;j<=m;j++){
             //last char = strlast char|| last char = '?'
-            if(t[i-1] == t[j-1] || p[j-1] == '?'){ // last == char or ? 
+            if(p[j-1] == t[i-1] || p[j-1] == '?'){ // last == char or ? 
                 dp[i][j] = dp[i-1][j-1]; 
             } else if (p[j-1] == '*'){ // last == *
                 dp[i][j] = dp[i-1][j] || dp[i][j-1]; // * = more then ine engchar || * = " " (empty string)
@@ -44,8 +44,8 @@ bool isMatch_44(string t,string p){
     return dp[n][m];
 }
 int main(){
-    string str1 = "abaaabab";
-    string str2 = "?**b*ab*"; // that is imp test case
+    string str1 = "";
+    string str2 = "*"; // that is imp test case
     cout<<isMatch_44(str1,str2);
     return 0;
 }
