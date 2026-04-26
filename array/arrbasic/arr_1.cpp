@@ -54,3 +54,4 @@ int main(){
         cout<<vec[i]<<" ";
     }
 }
+// minor style fix
