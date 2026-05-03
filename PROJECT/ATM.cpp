@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<random>
 using namespace std;
 class Account{
 public:
@@ -57,6 +58,17 @@ public:
 class ATM {
     vector<Account>accounts;
     int currentidx = -1;
+    std::random_device rd;
+    std::mt19937 gen{rd()};
+    std::uniform_int_distribution<> dis{0, 9};
+
+    string generateAccountNumber() {
+        string accountNumber;
+        for (int i = 0; i < 10; ++i) {
+            accountNumber += to_string(dis(gen));
+        }
+        return accountNumber;
+    }
 
 public:
     void registerasnew(){
@@ -66,15 +78,18 @@ public:
         string name;
         cout << "Enter user name: ";
         cin>>name;
-        cout << "Enter Account Number: ";
-        cin>>accno;
-        cout << "Enter PIN: ";
+
+        accno = generateAccountNumber();
+        cout<<"Enter PIN: ";
         cin >> pin;
         cout << "Enter amount for deposit: ";
         cin >> amount;
 
         accounts.push_back(Account(accno,name,pin,amount));
-        cout<<name<< " !Wellcome \n";
+        currentidx = accounts.size() - 1;
+        
+        cout<<name<< " !Wellcome \n"
+        << "Your account Number is "<< accno<< endl;
         mainMenu();
         return;
 
@@ -162,4 +177,3 @@ int main(){
     ATM a1;
     a1.atmmanu();
 }
-// minor style fix
