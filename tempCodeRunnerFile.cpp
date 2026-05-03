@@ -456,41 +456,39 @@ void func(vector<int>&nums, int n){
         }
     }
 }
-int main(){
-    int n;
-    cin>>n;
-    vector<int>nums(n);
-    for(int i=0; i<n; i++){
-        cin>>nums[i];
-    }
 
-    func(nums, n);
-    for(int i:nums){
-        cout<<i<<" ";
+char firstnonrepchar(string &s){
+    unordered_map<char,int>mpp;
+    for(auto &ch : s) mpp[ch]++;
+    for(char ch : s){
+        if(mpp.find(ch) != mpp.end()){
+            if(mpp[ch] == 1){
+                return ch;
+            }
+        }
     }
+    return ' ';
+}
+int main(){
+    string s = "LEETcODEL";
+    cout<<firstnonrepchar(s);
 }
 
-
-int main(){
-    int n;cin>>n;
-    cin.ignore();
-    vector<int>nums;
-    string str, temp;
-    getline(cin,str);
-    if(str[0] == '['){
-        str.erase(str.begin());
-    }
-    if(str[str.size()-1] == ']'){
-        str.pop_back();
-    }
-    stringstream ss(str);
-    while(getline(ss,temp,',')){
-        nums.push_back(stoi(temp));
-    }
-    
-}
-
-
+// int n;cin>>n;
+//     cin.ignore();
+//     vector<int>nums;
+//     string str, temp;
+//     getline(cin,str);
+//     if(str[0] == '['){
+//         str.erase(str.begin());
+//     }
+//     if(str[str.size()-1] == ']'){
+//         str.pop_back();
+//     }
+//     stringstream ss(str);
+//     while(getline(ss,temp,',')){
+//         nums.push_back(stoi(temp));
+//     }
 // minor style fix
 
 // final cleanup pass
