@@ -86,6 +86,41 @@ vector<vector<int>> zigZag(Node* root){
 
 }
 
+void left_(Node* root){
+    if(!root)return;
+    if(!root->left && !root->right) return;
+    cout<<root->data<<" ";
+    if(root->left) left_(root->left);
+    else left_(root->right);
+}
+void right_(Node* root){
+    if(!root)return;
+    if(!root->left && !root->right) return;
+    if(root->left) right_(root->right);
+    else right_(root->left);
+    cout<<root->data<<" "; 
+}
+void leaf(Node* root){
+    if(!root)return;
+    if(!root->left && !root->right){
+        cout<<root->data<<" ";
+        return;
+    }
+    leaf(root->left);
+    leaf(root->right);
+}
+
+void boundry_(Node* root){
+    if(!root)return;
+    cout<<root->data<<" ";
+    left_(root->left);
+     cout<<"\n";
+    leaf(root->left);
+    leaf(root->right);
+     cout<<"\n";
+    right_(root->right);
+}
+
 int main(){
     Node* root = new Node(3);
         root->left = new Node(5);
@@ -98,12 +133,12 @@ int main(){
         root->left->right->right = new Node(4);
         vector<vector<int>>ans = zigZag(root);
         
-        cout << "ZigZag Traversal:\n";
-        for (const auto& row : ans) {
-            for (int val : row) cout << val << " ";
-            cout << endl;
-        }
+        // cout << "ZigZag Traversal:\n";
+        // for (const auto& row : ans) {
+        //     for (int val : row) cout << val << " ";
+        //     cout << endl;
+        // }
 
-        // boundry(root);
+        boundry_(root);
 }
 // minor style fix
